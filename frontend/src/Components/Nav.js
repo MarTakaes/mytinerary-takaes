@@ -1,26 +1,30 @@
 import React from "react";
-import Navbar from 'react-bootstrap/Navbar'
-import Container from 'react-bootstrap/Container'
+import Navbar from 'react-bootstrap/Navbar';
+import Container from 'react-bootstrap/Container';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../style.css'
+import LoggingButton from "./Userimage";
 
-const Nav =() =>{
+export default class Nav extends React.Component{
 
-  return (
-<Navbar bg="light" expand="lg">
-  <Container>
-    <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
-    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-    <Navbar.Collapse id="basic-navbar-nav">
-      <Nav className="me-auto">
-        <Nav.Link href="#home">Home</Nav.Link>
-        <Nav.Link href="#link">Cities</Nav.Link>
-      </Nav>
-    </Navbar.Collapse>
-  </Container>
-</Navbar>
-  )
-  
+  render (){
+   return (
+    <Navbar id="nav" variant="dark">
+    <Container>
+      <Navbar.Toggle />
+      <img id="Logo" src="./assets/logo.png" alt="logo"/>
+      <Navbar id="Name">MyTinerary</Navbar>
+      <Navbar.Collapse className="justify-content-end">
+      <Navbar.Brand id="Navletter" href="#Home">Home</Navbar.Brand>
+      <Navbar.Brand id="Navletter" href="#Cities">Cities</Navbar.Brand>
+        <Navbar.Text>
+         <a href="#login"> <LoggingButton /></a>
+        </Navbar.Text>
+      </Navbar.Collapse>
+    </Container>
+  </Navbar>
+   
+    )
+  }
 }
 
-export default Nav
+

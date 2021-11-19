@@ -4,7 +4,10 @@ import Nav from './Nav'
 const HeaderHome = ()=>{
 
     return (
-        <Nav />
+        <>
+            <Nav />
+            
+        </>
     )
 }
 

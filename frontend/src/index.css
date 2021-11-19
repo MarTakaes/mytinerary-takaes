@@ -3,11 +3,41 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+}
+#userimg{
+  display: flex;
+  justify-content: center;
+  height: 2rem;
+  margin-left: 1rem;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+#navusertext{
+  display: flex;
+}
+#Logo{
+  height: 6rem;
+}
+#Name{
+  color: white;
+  font-family:serif;
+  font-size: 35px;
+}
+
+#Navletter{
+  color: rgba(179, 170, 170, 0.904);
+  font-size: 22px;
+  margin-left: 1rem;
+}
+#nav{
+  display: flex;
+  position: fixed;
+  flex-shrink: 12;
+  height: 5rem;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.794);
+}
+
+#hero{
+  width: 100%;
+  height: 40rem;
 }
