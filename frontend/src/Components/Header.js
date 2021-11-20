@@ -1,11 +1,11 @@
 import React from 'react'
-import Nav from './Nav'
+import MainNav from './MainNav'
 
 const HeaderHome = ()=>{
 
     return (
         <>
-            <Nav />
+            <MainNav/>
             
         </>
     )
