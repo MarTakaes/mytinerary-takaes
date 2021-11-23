@@ -9,7 +9,7 @@ class LoggingButton extends React.Component {
 
       return (
         <button className="btn" onClick ={() => this.handleClick()}>
-          <img id="userimg" src= "./assets/logouser.png" alt="user img"/>
+          <img id="userimg" src= "./assets/user.png" alt="user img"/>
         </button>
       );
     }

@@ -4,6 +4,7 @@ body {
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
 }
+
 #userimg{
   display: flex;
   justify-content: center;
@@ -15,11 +16,6 @@ body {
 }
 #Logo{
   height: 7rem;
-}
-#Name{
-  color: white;
-  font-family:serif;
-  font-size: 35px;
 }
 
 #Navletter{
@@ -34,35 +30,142 @@ body {
   height: 5rem;
   width: 100%;
   background-color:rgba(255, 255, 255, 0.103);
+  cursor: pointer!important;
+  z-index: 50;
 }
 
 #hero{
   width: 100%;
   height: 40rem;
+  position: absolute;
 }
 #hero3{
  display: flex;
  justify-content: center;
- margin-top: -35rem;
  z-index: 5;
 }
 #hero1{
-  width: 45%; 
+  width: 55%; 
   height: 33rem;
-  margin-top: 1rem;
+  margin-top: 3rem;
+  margin-right: 1rem;
+  z-index: 1;
 }
 #hero2{
-width: 45%;
+width: 55%;
 height: 33rem;
-
 margin-left: 1rem ;
+z-index: 1;
+margin-top: 2rem;
+}
+#herotext{
+  display: flex;
+  flex-direction: row;
+  
+}
+#title{
+  display: flex;
+  position:relative;
+  justify-content: flex-start;
+  font-family: fantasy;
+  margin-top: -32rem;
+  z-index: 5;
+  color: rgba(255, 255, 255, 0.726);
 }
 h2{
+ font-size: 6rem;
+}
+#lecture{
+  display: flex;
+  justify-content: flex-end;
+}
+h3{
+  color: rgb(3, 3, 3);
+  z-index: 5;
+  font-size: 26px;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+#btntrp{
   display: flex;
   justify-content: center;
-  font-family: fantasy;
-  font-size: 90px;
-  z-index: 10;
-  margin-top: -28rem;
-  color: rgba(255, 255, 255, 0.904);
+  margin-top: 6rem;
+  z-index: 50;
+}
+#btntrip{
+font-size: 30px;
+font-style: italic;
+font-weight: bold;
+z-index: 50;
+}
+h4{
+  margin-top: -8rem;
+  margin-left: 5rem;
+  color: #1a6979;
+  font-style: italic;
+}
+#little1{
+  width: 40rem;
+  height: 25rem;
+  z-index: 40;
+  margin-top: -21rem;
+  margin-left: -11rem;
+}
+#little2{
+  width: 20rem;
+  margin-top: -12rem;
+  height: 12rem;
+  margin-left: 45rem;
+   z-index: 50;
+}
+#text{
+  display: flex;
+  margin-top: 27rem;
+  justify-content: flex-start;
+}
+#imgs{
+  z-index: 1;
+  display: flex;
+}
+
+a{
+  all: unset;
+}
+#popular{
+  display: flex;
+  justify-content: center;
+  margin-left: 0;
+  color: #324b51;
+  margin-top: 3rem;
+  font-size: 40px;
+}
+#card{
+  width: 90%;
+}
+#slider{
+  display: flex;
+  justify-content: center;
+  margin-left: 2rem;
+}
+.carousel-control-next-icon{
+  color: #324b51!important;
+}
+.footer{
+display: flex;
+justify-content: space-evenly;
+align-items: center;
+background-color: #324b51b6;
+}
+#ig{
+  height: 2rem;
+  cursor: pointer;
+}
+#fb{
+  height: 2rem;
+  cursor: pointer;
+}
+#pl{
+  cursor: pointer!important;
+  color: black!important;
+  font-size: 20px;
 }
