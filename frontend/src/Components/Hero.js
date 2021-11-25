@@ -22,7 +22,7 @@ const Hero =()=>{
                         designed by insiders who know and love their cities!</h3> 
                   </div>
                   <div id="btntrp">
-                  <Button id="btntrip" variant="light"><a href="#Cities" >Plane your next road trip</a></Button>
+                  <Button id="btntrip" variant="light"><a href="#Cities" >Plan your next road trip</a></Button>
                   </div>
                  </div> 
                  </Container>
