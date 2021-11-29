@@ -33,7 +33,7 @@ const Hero =()=>{
                     <br></br>  -Mark Twain</h4>
                     </div>
                     <div id="imgs" >
-                    <img id="little2" src="./assets/little2.jpg " alt="second little image"/>
+                    <img id="little2" src="./assets/little2.jpg " alt="second little img"/>
                     <img id="little1" src="./assets/little1.jpg" alt="first little image"/>
                   </div>     
                  
