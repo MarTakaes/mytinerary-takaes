@@ -10,15 +10,15 @@ export default class MainNav extends React.Component{
 
   render (){
    return (
-    <Navbar id="nav" expand md>
+    <Navbar id="nav" expand="md">
     <Container >
        <Navbar.Toggle />
         <Navbar.Collapse className="center">
         <Link id="Navletter" to="/">Home</Link>
-        <img id="Logo" src="./assets/logo.png" alt="logo"/>
+        <img id="Logo" src="../assets/logo.png" alt="logo"/>
         <Link id="Navletter" to="/Cities">Cities</Link>
         <Nav.Link className="ms-auto">
-         <a href="#login" > <LoggingButton /></a>
+         <a href="login" > <LoggingButton /></a>
         </Nav.Link>
       </Navbar.Collapse>
     </Container>

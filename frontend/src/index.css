@@ -35,29 +35,10 @@ body {
 }
 
 #hero{
+  display: flex;
   width: 100%;
-  height: 40rem;
-  position: absolute;
 }
-#hero3{
- display: flex;
- justify-content: center;
- z-index: 5;
-}
-#hero1{
-  width: 55%; 
-  height: 33rem;
-  margin-top: 3rem;
-  margin-right: 1rem;
-  z-index: 1;
-}
-#hero2{
-width: 55%;
-height: 33rem;
-margin-left: 1rem ;
-z-index: 1;
-margin-top: 2rem;
-}
+
 #herotext{
   display: flex;
   flex-direction: row;
@@ -65,10 +46,11 @@ margin-top: 2rem;
 }
 #title{
   display: flex;
-  position:relative;
+  position: absolute;
+  left: 8%;
+  top: 25%;
   justify-content: flex-start;
   font-family: fantasy;
-  margin-top: -32rem;
   z-index: 5;
   color: rgba(255, 255, 255, 0.726);
 }
@@ -76,20 +58,21 @@ h2{
  font-size: 6rem;
 }
 #lecture{
-  display: flex;
-  justify-content: flex-end;
+  position: absolute;
+  left: 30%;
+  top: 47%;
 }
 h3{
-  color: rgb(3, 3, 3);
+  color: rgb(2, 2, 2);
   z-index: 5;
   font-size: 26px;
   font-weight: bold;
   margin-top: 1rem;
 }
 #btntrp{
-  display: flex;
-  justify-content: center;
-  margin-top: 6rem;
+ position: absolute;
+ top: 66%;
+ right: 20%;
   z-index: 50;
 }
 #btntrip{
@@ -104,24 +87,9 @@ h4{
   color: #1a6979;
   font-style: italic;
 }
-#little1{
-  width: 40rem;
-  height: 25rem;
-  z-index: 40;
-  margin-top: -21rem;
-  margin-left: -11rem;
-}
-#little2{
-  width: 20rem;
-  margin-top: -12rem;
-  height: 12rem;
-  margin-left: 45rem;
-   z-index: 50;
-}
 #text{
-  display: flex;
-  margin-top: 27rem;
-  justify-content: flex-start;
+  margin-top: -16rem;
+  margin-left: 3rem;
 }
 #imgs{
   z-index: 1;
@@ -136,8 +104,9 @@ a{
   justify-content: center;
   margin-left: 0;
   color: #324b51;
-  margin-top: 3rem;
+  margin-top: 13rem;
   font-size: 40px;
+  background-color: black;
 }
 #card{
   width: 90%;
@@ -152,9 +121,10 @@ a{
 }
 .footer{
 display: flex;
-justify-content: space-evenly;
 align-items: center;
-background-color: #324b51b6;
+justify-content: space-around;
+background-color: #000b0e6c;
+color: #324b51;
 }
 #ig{
   height: 2rem;
@@ -168,4 +138,228 @@ background-color: #324b51b6;
   cursor: pointer!important;
   color: black!important;
   font-size: 20px;
+
+}
+.card-ciudad{
+  display: flex;
+ flex-wrap: wrap;
+ justify-content: center;
+ }
+
+#spaceLeft{
+  display: flex;
+  flex-direction: column;
+  font-size: large;
+}
+
+#spaceRight{
+  display: flex;
+}
+
+.div{
+  display:flex;
+}
+.minidiv{
+  margin:0.5rem;
+  display:flex;
+  justify-content: space-evenly!important;
+}
+
+.hashtag{
+  display:flex;
+  justify-content:space-evenly;
+}
+#itinerariotext{
+  font-size: 35px;
+}
+.div1{
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+.itinerarioCard{
+  display: flex; 
+  align-self: center; 
+  flex-direction: column;
+  align-items: center;
+  padding:1rem;
+  margin:1rem;
+  background-color: rgba(0, 0, 0, 0.575);
+  width: 60%;
+  line-height-step: 40vh;
+  border: 1px solid white;
+  border-radius: 25px;
+  box-shadow: 0px 0px 20px black;
+}
+.singleCard {
+width: 150px;
+height: 150px;
+object-fit: cover;
+  display: flex;
+  border-radius: 50%;
+  justify-content: center;
+  border: var(--navBar) solid 3px;
+ 
+}
+.herobg{
+  width: 100%;
+  height: 30rem;
+}
+.btn-warning{
+  background-color: #324b51!important;
+  border-color: #324b51!important;
+}
+.letra{
+  font-style: italic;
+  font-size: 17px;
+}
+.contenedor-ciudades{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.buscador{
+  margin-top: -10rem;
+  width: 60%;
+  height: 5rem;
+  border-color: black;
+  background-color: #324b5186;
+  color: white!important;
+  font-size: 30px;
+  border-radius: .2rem;
+
+}
+#text1{
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+#text2{
+  display: flex;
+  justify-content: center;
+  font-size: 22px;
+  margin-left: 20rem;
+  margin-right: 20rem;
+  margin-top: 2rem;
+}
+.card-ciudad{
+  margin-top: 6rem;
+  justify-content: space-evenly;
+}
+@media (max-width: 799px){
+  h2{
+    font-size: 3rem;
+  }
+  #title{
+    top: 15%;
+  }
+  #lecture{
+    position: absolute;
+    left: 30%;
+    top: 23%;
+  }
+  h3{
+    font-size: 22px;
+  }
+  #btntrp{
+    position: absolute;
+    top: 40%;
+    right: 8%;
+     z-index: 50;
+   }
+   #btntrip{
+   font-size: 18px;
+   font-style: italic;
+   font-weight: bold;
+   z-index: 50;
+   }
+   h4{
+    font-size: 17px;
+  }
+  #text{
+    margin-top: -9rem;
+    margin-left: -3rem;
+  }
+  #popular{
+    margin-top: 6rem;
+    font-size: 32px;
+  }
+  .card-ciudad{
+    justify-content: center;
+  }
+  .buscador{
+    font-size: 25px;
+  }
+  #text2{
+    font-size: 18px;
+    margin-left: 7rem;
+    margin-right: 7rem;
+    margin-top: 2rem;
+  }
+  .itinerarioCard{
+    width: 70rem;
+  }
+}
+
+@media (max-width: 599px){
+  h2{
+    font-size: 2rem;
+  }
+  #title{
+    top: 8%;
+  }
+  #lecture{
+    position: absolute;
+    left: 26%;
+    top: 12%;
+  }
+  h3{
+    font-size: 13px;
+  }
+  #btntrp{
+    position: absolute;
+    top: 23%;
+    right: 8%;
+     z-index: 50;
+   }
+   #btntrip{
+   font-size: 10px;
+   z-index: 50;
+   }
+   h4{
+    font-size: 10px;
+  }
+  #text{
+    margin-top: 3rem;
+    margin-left: -4rem;
+  }
+  #popular{
+    margin-top: 4rem;
+    font-size: 25px;
+  }
+  .footer{
+    display: flex;
+    flex-direction: column;
+  }
+  #spaceLeft{
+    font-size: 12px;
+  }
+  #Logo{
+    height: 4rem;
+  }
+  #ig{
+    height: 1.5rem;
+  }
+  #fb{
+    height: 1.5rem;
+  }
+  #text2{
+    font-size: 15px;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-top: 1rem;
+  }
+  .itinerarioCard{
+    width: 20rem;
+  }
 }
