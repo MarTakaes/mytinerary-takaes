@@ -38,7 +38,7 @@ function Ciudad(props) {
       {props.itineraries[0] ? (
         <Itinerary itineraries={props.itineraries} />
       ) : (
-        <h1>Under construction...</h1>
+        <h1 id="donot">We do not have itineraries for this city yet, coming soon on tuesday 12/14!</h1>
       )}
     </div>
     </>
