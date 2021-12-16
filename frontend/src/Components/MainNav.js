@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import Container from 'react-bootstrap/Container';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import LoggingButton from "./Userimage";
+import OffCanvasExample from "./OffCanvas";
 
 export default class MainNav extends React.Component{
 
@@ -17,9 +18,7 @@ export default class MainNav extends React.Component{
         <Link id="Navletter" to="/">Home</Link>
         <img id="Logo" src="../assets/logo.png" alt="logo"/>
         <Link id="Navletter" to="/Cities">Cities</Link>
-        <Nav.Link className="ms-auto">
-         <a href="login" > <LoggingButton /></a>
-        </Nav.Link>
+        <Nav.Item className="ms-auto"><OffCanvasExample placement = "end"/></Nav.Item>
       </Navbar.Collapse>
     </Container>
   </Navbar>

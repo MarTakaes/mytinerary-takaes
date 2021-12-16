@@ -20,7 +20,7 @@ function Carrousel() {
         name: "New Delhi",
         country: "India",
         image:
-          "./assets/cities/nueva dheli.jpg",
+          "./assets/cities/nuevadelhi.jpg",
       },
       {
         name: "Kyoto",

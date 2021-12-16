@@ -11,6 +11,7 @@ body {
   height: 3rem;
 }
 
+
 #navusertext{
   display: flex;
 }
@@ -68,6 +69,18 @@ h3{
   font-size: 26px;
   font-weight: bold;
   margin-top: 1rem;
+}
+.btn-primary{
+  background-color: rgba(255, 255, 255, 0)!important;
+  border-color: rgba(255, 255, 255, 0)!important;
+}
+.off{
+  height: 20rem!important;
+}
+.offb{
+display: flex;
+flex-direction: row;
+justify-content: space-evenly;
 }
 #btntrp{
  position: absolute;

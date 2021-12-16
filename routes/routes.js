@@ -25,4 +25,8 @@ Router.route('/itinerary/:id')
 Router.route("/itineraries/:city")
 .get(itineraryControllers.returnItinerariesByCity)
 
+// Router.route('/auth/signup')
+// .post(authControllers.postUser)
+// .get(authControllers.readUsers)
+
 module.exports = Router
