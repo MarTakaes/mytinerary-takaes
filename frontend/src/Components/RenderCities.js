@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Card from "react-bootstrap/Card";
-import Row from "react-bootstrap/Row";
 import { Link } from "react-router-dom";
 
 function RenderCities() {

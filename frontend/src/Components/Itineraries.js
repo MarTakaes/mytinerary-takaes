@@ -1,5 +1,4 @@
 import {Button, Collapse} from "react-bootstrap"
-import {Link} from "react-router-dom"
 import {useState} from "react"
 
 export default function Itinerary(props) {
@@ -16,7 +15,7 @@ export default function Itinerary(props) {
          <div className="div1">
           <div key={index} className="itinerarioCard">
             <h2 id="itinerariotext">{itinerary.itineraryName}</h2>
-            <img className="singleCard" variant="top" src={itinerary.userImg} />
+            <img className="singleCard" variant="top" src={itinerary.userImg} alt="user img"/>
             <h3>{itinerary.userName}</h3>
             <div className="letra">
                 <span> Likes: {itinerary.likes} ❤️</span> <br></br>

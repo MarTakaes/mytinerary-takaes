@@ -1,6 +1,6 @@
 const User = require("../models/User");
 const Country = require("../models/Country");
-const bcryptjs = require("bcryptjs"); //encripta y desencripta
+const bcryptjs = require("bcryptjs"); 
 const jwt = require("jsonwebtoken");
 
 const authController = {

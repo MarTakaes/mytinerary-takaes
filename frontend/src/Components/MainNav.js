@@ -4,7 +4,6 @@ import Nav from 'react-bootstrap/Nav'
 import { Link } from "react-router-dom";
 import Container from 'react-bootstrap/Container';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import LoggingButton from "./Userimage";
 import OffCanvasExample from "./OffCanvas";
 
 export default class MainNav extends React.Component{

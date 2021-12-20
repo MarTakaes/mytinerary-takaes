@@ -1,5 +1,5 @@
 const joi = require("joi");
-const passwordComplex = require("joi-password-complexity");
+// const passwordComplex = require("joi-password-complexity");
 const complexOptions = {
   min: 7,
   max: 30,

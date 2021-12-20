@@ -32,10 +32,14 @@ function OffCanvasExample({ name, ...props }) {
           </Offcanvas.Header>
           <Offcanvas.Body className="offb">
               <div>
-                <Button variant="outline-dark">Sign In</Button>
+                <Button href="/signin" variant="outline-dark">
+                  Sign In
+                </Button>
               </div>
               <div>
-                <Button variant="outline-dark">Sign Up</Button>
+                <Button href="/signup" variant="outline-dark">
+                  Sign Up
+                </Button>
               </div>
           </Offcanvas.Body>
         </Offcanvas>

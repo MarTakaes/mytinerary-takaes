@@ -28,18 +28,18 @@ Router.route('/itinerary/:id')
 Router.route("/itineraries/:city")
 .get(itineraryControllers.returnItinerariesByCity)
 
-Router.route("/auth/signup")
-.get(getUsers)
-.post(validator,saveUser)
-.put(modifyUser)
-Router.route("/auth/signin")
-.post(signIn)
+Router.route("/auth/SignUp")
+.get(authControllers.getUsers)
+.post(validator,authControllers.saveUser)
+.put(authControllers.modifyUser)
+Router.route("/auth/SignIn")
+.post(authControllers.signIn)
 
 Router.route("/auth/user")
-.get(passport.authenticate('jwt',{session:false}), authUser)
+.get(passport.authenticate('jwt',{session:false}), authControllers.authUser)
 
 Router.route("/countries")
-.get(getCountries)
-.post(uploadCountries);
+.get(authControllers.getCountries)
+.post(authControllers.uploadCountries);
 
 module.exports = Router

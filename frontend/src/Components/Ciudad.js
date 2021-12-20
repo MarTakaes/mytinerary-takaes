@@ -3,7 +3,6 @@ import {connect} from "react-redux"
 import citiesAction from "../redux/actions/citiesAction"
 import {useParams} from "react-router-dom"
 import Itinerary from "../Components/Itineraries"
-import {Link} from "react-router-dom"
 
 function Ciudad(props) {
   const params = useParams()
