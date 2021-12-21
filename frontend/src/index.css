@@ -134,6 +134,8 @@ a{
 }
 .footer{
 display: flex;
+position: absolute;
+width: 100%;
 align-items: center;
 justify-content: space-around;
 background-color: #000b0e6c;
