@@ -1,18 +1,20 @@
 import React from "react";
+import {connect} from "react-redux"
 
+function LoggingButton (props){
 
-class LoggingButton extends React.Component {
-    handleClick() {
-      console.log('this is:', this);
+    function handleClick() {
+      console.log('this is:');
     }
-    render() {
-
       return (
-        <button className="btn" onClick ={() => this.handleClick()}>
-          <img id="userimg" src= "../assets/user.png" alt="user img"/>
+        <button className="btn" onClick ={() => handleClick()}>
+          {props.user ? <img width="25rem" src={props.user.photo} alt={props.user.name}/> : <img id="userimg" src= "../assets/user.png" alt="user img"/>}
         </button>
       );
-    }
   }
-
- export default LoggingButton
+  const mapStateToProps = (state) => {
+    return {
+      user: state.authReducer.user
+    };
+  };
+ export default connect (mapStateToProps)(LoggingButton)

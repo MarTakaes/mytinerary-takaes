@@ -1,37 +1,71 @@
-const Router = require ('express').Router();
-const citiesControllers = require ('../controllers/citiesControllers')
-const itineraryControllers = require  ('../controllers/itineraryControllers')
-const authControllers = require("../controllers/authControllers");
+const citiesController = require ("../controllers/citiesControllers")
+const itineraryController = require("../controllers/itineraryControllers")
+const authControllers = require("../controllers/authControllers")
+const activityControllers = require("../controllers/activityControllers")
+const likesControllers = require("../controllers/likesControllers")
 const validator = require("../config/validator")
 const passport = require('../config/passport')
+const commentControllers = require('../controllers/commentControllers')
+const validatorComment = require("../config/validatorComment")
+
+const Router = require("express").Router()
 
 Router.route('/cities')
-.get(citiesControllers.returnCities)
-.post(citiesControllers.createCity)
+.get(citiesController.returnCities)
+.post(citiesController.createCity)
 
 Router.route('/city/:id')
-.get(citiesControllers.returnCity)
-.post(citiesControllers.createCity)
-.delete(citiesControllers.deleteCity)
-.put(citiesControllers.modifyCity)
+.get(citiesController.returnCity)
+.post(citiesController.createCity)
+.delete(citiesController.deleteCity)
+.put(citiesController.modifyCity)
 
 Router.route('/itinerary')
-.get(itineraryControllers.returnItineraries)
-.post(itineraryControllers.createItinerary)
+.get(itineraryController.returnItineraries)
+.post(itineraryController.createItinerary)
 
 Router.route('/itinerary/:id')
-.get(itineraryControllers.returnItinerary)
-.post(itineraryControllers.returnItinerary)
-.delete(itineraryControllers.deleteItinerary)
-.put(itineraryControllers.modifyItinerary)
+.get(itineraryController.returnItinerary)
+.post(itineraryController.returnItinerary)
+.delete(itineraryController.deleteItinerary)
+.put(itineraryController.modifyItinerary)
 
 Router.route("/itineraries/:city")
-.get(itineraryControllers.returnItinerariesByCity)
+.get(itineraryController.returnItinerariesByCity)
 
-Router.route("/auth/signup").get(authControllers.getUsers).post(validator,authControllers.saveUser).put(authControllers.modifyUser)
-Router.route("/auth/signin").post(authControllers.signIn)
+Router.route("/auth/signup")
+.get(authControllers.readUsers)
+.post(validator, authControllers.signUp)
 
-Router.route("/auth/user").get(passport.authenticate('jwt',{session:false}), authControllers.authUser)
 
-Router.route("/countries").get(authControllers.getCountries).post(authControllers.uploadCountries);
+Router.route("/auth/signin")
+.post( authControllers.signIn) 
+
+Router.route("/auth")
+.get(passport.authenticate("jwt", {session: false}), authControllers.checkToken)
+
+Router.route('/activities')
+.post(activityControllers.postActivity)
+.get(activityControllers.returnActivities)
+
+Router.route('/activities/:id')
+.get(activityControllers.returnActivity)
+.put(activityControllers.modifyActivity)
+.delete(activityControllers.deleteActivity)
+
+Router.route("/activity/:itineraryId")
+.get(activityControllers.returnActivitiesByItinerary) 
+
+Router.route('/like').put(likesControllers.likes)
+
+Router.route('/comments/:itineraryId')
+.get(commentControllers.getComments)
+.post(validatorComment, commentControllers.postComment) 
+
+Router.route('/comments')
+.get(commentControllers.getAllComments)
+.put(passport.authenticate("jwt", {session: false}), commentControllers.editComment) 
+
+Router.route('/comments/:commentId')
+.delete(passport.authenticate("jwt", {session: false}), commentControllers.deleteComment) 
 module.exports = Router

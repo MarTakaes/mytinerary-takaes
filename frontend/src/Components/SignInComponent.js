@@ -1,4 +1,4 @@
-import authActions from '../redux/actions/authAction'
+import authActions from '../redux/actions/authActions'
 import {connect} from 'react-redux'
 import { useRef} from "react"
 import GoogleLogin from 'react-google-login'

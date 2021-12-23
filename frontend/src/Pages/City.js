@@ -1,14 +1,14 @@
 
 import MainNav from "../Components/MainNav";
 import Footer from "../Components/Footer";
-import Ciudad from "../Components/Ciudad"
+import AllCities from "../Components/AllCities";
 
 function City() {
   
   return (
     <>
       <MainNav />
-      <Ciudad/>
+      <AllCities/>
       <Footer />
     </>
   );

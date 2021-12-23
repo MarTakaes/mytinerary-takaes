@@ -187,10 +187,17 @@ color: #324b51;
 #itinerariotext{
   font-size: 35px;
 }
-.div1{
+#username{
+  display: flex;
+  margin-top: 1rem;
+}
+#sub{
+  display: flex;
+  margin-left: -5rem;
+}
+.div{
   display: flex;
   justify-content: center;
-  margin-top: 2rem;
 }
 .itinerarioCard{
   display: flex; 
@@ -229,6 +236,8 @@ object-fit: cover;
   height: 30rem;
 }
 .btn-warning{
+  color: rgba(255, 255, 255, 0.733);
+  margin-top: 1rem;
   background-color: #324b51!important;
   border-color: #324b51!important;
 }
@@ -236,10 +245,36 @@ object-fit: cover;
   font-style: italic;
   font-size: 17px;
 }
+#divis{
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  border: #324b51;
+  border-radius: 1rem;
+  border-color: #324b51;
+  border-style: solid;
+
+}
+#titleact{
+  margin-left: -3rem;
+}
 .contenedor-ciudades{
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+#img{
+  height: 9rem;
+  margin-top: 1rem;
+}
+#pact{
+  margin-top: 1rem;
+  font-size: medium;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  font-style: italic;
+  font-weight: bold;
 }
 .buscador{
   margin-top: -10rem;
@@ -298,6 +333,9 @@ object-fit: cover;
    }
    h4{
     font-size: 17px;
+  }
+  .photo{
+   height: 9rem;
   }
   #text{
     margin-top: -9rem;

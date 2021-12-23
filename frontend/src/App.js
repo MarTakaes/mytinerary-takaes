@@ -3,39 +3,37 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import Home from './Pages/Home';
 import Cities from './Pages/Cities';
 import City from './Pages/City';
-import { connect } from "react-redux";
-import authActions from "./redux/actions/authAction";
 import SignUp from './Pages/SignUp';
 import SignIn from './Pages/SignIn'
+import {ToastContainer} from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
+import {connect} from "react-redux"
 import {useEffect} from "react"
+import authActions from './redux/actions/authActions';
 
 function App(props) {
   const { authUser } = props;
   useEffect(() => {
-    authUser();
+      const token =localStorage.getItem('token')
+      if(token){
+          authUser();
+        }
   }, [authUser]);
   return (
-    <BrowserRouter>
+    <BrowserRouter>   
+    <ToastContainer autoClose={4000} />
     <Routes>    
          <Route path="/" element={<Home />}/>   
-         <Route path="/Cities" element={<Cities />}/>         
-         <Route path="/City/:id" element={<City />}/>
-         <Route path="/signin" element={<SignIn />} />
-         <Route path="/signup" element={<SignUp />} />
-    </Routes>
+         <Route path="/cities" element={<Cities />}/>         
+         <Route path="/city/:id" element={<City />}/>
+         <Route path="/signup" element={<SignUp />}/>
+         <Route path="/signin" element={<SignIn />}/>        
+    </Routes> 
     </BrowserRouter>
   );
 }
+const mapDispatchToProps ={
+  authUser: authActions.signToken
+}
 
-
-const mapStateToProps = (state) => {
-  return {
-    user: state.authReducer.response,
-  };
-};
-
-const mapDispatchToProps = {
-  authUser: authActions.authUser,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect (null,mapDispatchToProps)(App);

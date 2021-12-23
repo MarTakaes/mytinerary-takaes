@@ -10,7 +10,7 @@ function GoogleButton (){
         <>
         
         <GoogleLogin
-    clientId="190201580680-u46pho0n2vjalcan540tm22oan4vhc0v.apps.googleusercontent.com"
+    clientId="537200634023-i15m1lbqctne823rf19paql33auqf761.apps.googleusercontent.com"
     buttonText="Login"
     onSuccess={responseGoogle}
     onFailure={responseGoogle}
