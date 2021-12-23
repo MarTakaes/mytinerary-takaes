@@ -35,14 +35,13 @@ Router.route("/itineraries/:city")
 
 Router.route("/auth/signup")
 .get(authControllers.readUsers)
-.post(validator, authControllers.signUp)
-
+.post(validator, authControllers.signUpUser)
 
 Router.route("/auth/signin")
-.post( authControllers.signIn) 
+.post( authControllers.signInUser)
 
 Router.route("/auth")
-.get(passport.authenticate("jwt", {session: false}), authControllers.checkToken)
+.get(passport.authenticate("jwt", {session: false}), authControllers.token)
 
 Router.route('/activities')
 .post(activityControllers.postActivity)
