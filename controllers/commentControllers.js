@@ -4,14 +4,17 @@ const commentControllers = {
     getAllComments:async (req, res) => {
         Comment.find()
         .populate({ path: "user", select: ["name", "email", "photo"]})
-        .then(response => {res.json({success: true, response: response})})
-        
+        .then(response => {
+            console.log(response)
+            res.json({success: true, response: response})}) 
     },
     getComments: async (req, res) => {
         try {
             let commentList = await Comment.find({
                 itinerary: req.params.itineraryId,
-            }).populate({ path: "user", select: ["name", "email", "photo"]});
+            }).populate({ path: "user", select: ["name", "email", "image"]});
+            console.log("hello")
+            console.log(commentList)
             res.json({ success: true, error: null, response: commentList });
         } catch (e) {
             res.json({ success: false, error: e, response: null });

@@ -44,9 +44,10 @@ function Comments(props) {
     
     return(
         <div className="comentario">
+            {console.log(props.comment)}
             {props.comment.user && (
                 <div className="comentario-cont">
-                    <img className="foto-comentario" src={props.comment.user.photo} />
+                    <img className="foto-comentario" src={props.comment.user.image} />
                     <div className="texto-comentario">
                         <h5 className="titulo-name">{props.comment.user.name}</h5>
                         <p className="msj-comentario">{props.comment.message}</p> 

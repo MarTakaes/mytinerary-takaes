@@ -39,7 +39,7 @@ useEffect(() => {
     
     props.getAllComments()
 }
-
+console.log(props.comments)
 const comment = useRef()
     
 function handleComment(e){
@@ -131,7 +131,9 @@ function handleLike() {
                             <div className="titulo-comentarios">
                                 <h3 className='comentario-titulo' >Comments</h3>
                             </div>
-                            {props.comments && props.comments.map(comment => {
+                            
+                            {props.comments.length>0 && props.comments.map(comment => {
+                              {console.log(comment.itinerary)}
                                 if(comment.itinerary === props.itinerary._id){
                                     return(
                                         <div className='fondo-comentario'>
