@@ -134,7 +134,7 @@ a{
 }
 .footer{
 display: flex;
-position: absolute;
+position:absolute;
 width: 100%;
 align-items: center;
 justify-content: space-around;
@@ -256,6 +256,63 @@ object-fit: cover;
   border-style: solid;
 
 }
+.signinform{
+  display: flex;
+}
+.inputs{
+  display: flex;
+  flex-direction: column;
+}
+.titulosup{
+  margin-top: 12rem;
+  font-size: 35px;
+}
+.titulosup2{
+  margin-top: 6rem;
+  font-size: 35px;
+}
+#input2{
+  margin-top: 1rem;
+}
+.submit2{
+  margin-left:-2rem ;
+}
+.google2{
+  margin-top: 1rem;
+  margin-left: 2rem;
+}
+#input{
+  margin-top: 1.5rem;
+  
+}
+.btn-submit{
+  margin-top: 1rem;
+  margin-left: 8.5rem;
+  background-color: #324b51c4;
+}
+.account{
+  margin-top: 2rem;
+  font-size: 18px;
+  margin-bottom: 4rem;
+  margin-left: 3rem;
+}
+.account2{
+  margin-top: 1rem;
+  margin-left: 3rem;
+  font-size: 18px;
+}
+#bgsign{
+  width: 72%;
+  height: 86.7vh;
+}
+.btn-sign{
+color: blue;
+
+}
+#google{
+  margin-top: 2rem;
+  margin-left: 5rem;
+}
 #titleact{
   margin-left: -3rem;
 }
@@ -267,6 +324,10 @@ object-fit: cover;
 #img{
   height: 9rem;
   margin-top: 1rem;
+  
+}
+.formulario{
+  margin-left: 1rem;
 }
 #pact{
   margin-top: 1rem;

@@ -4,14 +4,15 @@ const jwt = require('jsonwebtoken')
 
 const authControllers = {
     signUp: async(req,res) => {
-        const {name, lastName, email, password, photo, country, google} = req.body
+        console.log("kevin tiene sueño")
+        const {name, lastName, email, password, image, country, google} = req.body
         try{
             const userExist = await User.findOne({email})
             if (userExist){
                 res.json({success: false, error: "The username is already registered", response:null})
             }else{
                 const passwordHasheada = bcryptjs.hashSync(password, 10) 
-                const newUser = new User ({name, lastName, email, password:passwordHasheada, photo, country, google} )
+                const newUser = new User ({name, lastName, email, password:passwordHasheada, image, country, google} )
                 await newUser.save() 
                 const token = jwt.sign({...newUser}, process.env.SECRET_KEY)
                 res.json({success: true, response: {token, newUser}, error: null})
@@ -48,6 +49,7 @@ const authControllers = {
     },
     checkToken: (req, res) => {
         res.json(req.user)
+        console.log(req.user)
     },
 }
 
