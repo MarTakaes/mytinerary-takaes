@@ -3,7 +3,7 @@ import {useState} from "react"
 import { useEffect, useRef } from "react"
 import {toast} from "react-toastify"
 import Col from "react-bootstrap/Col"
-import activitiesAction from "../redux/actions/activitiesActions"
+import activitiesAction from "../redux/actions/activitiesAction"
 import Comments from "../Components/Comments"
 import itinerariesActions from "../redux/actions/itinerariesActions"
 import Image from 'react-bootstrap/Image'
@@ -50,14 +50,15 @@ function handleComment(e){
         comment.current.value
     )
     comment.current.value = ""
-        
+        console.log("le di click")
 }
 
 function handleLike() {
   if (localStorage.getItem("token")) {
       setLiked(!liked)
-      liked ? setlikeQuantity(likeQuantity - 1) : setlikeQuantity(likeQuantity + 1)
-      props.likes(props.user._id, props.itinerary._id, props.params)
+      liked ? setlikeQuantity(likeQuantity - 1) : setlikeQuantity(likeQuantity + 1) 
+      console.log(props.itinerary)
+      props.likes(props.user._id, props.itinerary._id, props.params) 
   } else {
       toast.warning("Please sign in to like this itinerary", {
       position: toast.POSITION.TOP_CENTER,
@@ -81,7 +82,8 @@ function handleLike() {
                 <div className="like">
                                 <p className="corazones" onClick={() => handleLike()}>
                                     {liked ?  "💗" : "♡" }
-                                </p><p>{likeQuantity}</p>
+                                </p>
+                               
                                 </div>
                 </div>                
                 <div className="minidiv" id="border">
@@ -163,7 +165,7 @@ function handleLike() {
 }
 const mapStateToProps = (state) => {
   return{
-    user: state.authReducer.newUser,
+    user: state.authReducer.user,
     comments: state.itinerariesReducer.comments}
   
 }

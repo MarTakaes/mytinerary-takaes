@@ -10,8 +10,8 @@ module.exports = passport.use(
       jwtFromRequest: extractJwt.fromAuthHeaderAsBearerToken(),
       secretOrKey: process.env.SECRET_KEY,
     },
-    (jwt_payload, done) => {
-      User.findOne({ _id: jwt_payload.user._id })
+    (jwt_payload, done) => { console.log(jwt_payload._doc._id)
+      User.findOne({ _id: jwt_payload._doc._id })
         .then((user) => {
           if (user) {
             return done(null, user);

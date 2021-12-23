@@ -18,20 +18,27 @@ const commentControllers = {
         }
     },
     postComment: async (req, res) => {
-        const itinerary = req.params.itineraryId
-        const { user, message } = req.body;
+        const { user, itinerary, message } = req.body;
         try {
-            await new Comment({itinerary, user, message }).save();
-            res.json({
-                success: true,
-                response: "Uploaded comment with message: " + message,
-                error: null,
-            });
+          const newComment = new Comment({ user, itinerary, message });
+          let comment = await newComment
+            .save()
+            .then((newComment) =>
+              newComment.populate({
+                path: "user",
+                select: ["email", "image", "name"],
+              })
+            );
+          res.json({
+            success: true,
+            response: comment,
+            error: null,
+          });
         } catch (e) {
-            res.json({ success: false, error: e, response: null });
-            console.error(e);
+          res.json({ success: false, error: e, response: null });
+          console.error(e);
         }
-    },
+      },
     editComment: async (req, res) => {
         try {
             let newComment = await Comment.findOneAndUpdate(

@@ -5,6 +5,18 @@ const initialState = {
 }
 
 const itinerariesReducer = (state = initialState, action) => {
+
+    function getUniqueValues(array) {
+        let result = [];
+        const map = new Map();
+        for (const item of array) {
+          if (!map.has(item._id)) {
+            map.set(item._id, true);
+            result.push(item);
+          }
+        }
+        return result;
+      }
     switch (action.type) {  
         case 'GET_ITINERARY':
             return{
@@ -27,10 +39,12 @@ const itinerariesReducer = (state = initialState, action) => {
                 comments: action.payload
             } 
         case 'POST_COMMENTS':
-            return{
-                ...state,
-                comments: action.payload
-            } 
+            let list = state.comments.concat(action.payload);
+
+            return {
+              ...state,
+              comments: getUniqueValues(list),
+            }
         case 'EDIT_COMMENTS':
             return{
                 ...state,

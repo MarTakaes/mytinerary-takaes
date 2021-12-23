@@ -35,13 +35,14 @@ Router.route("/itineraries/:city")
 
 Router.route("/auth/signup")
 .get(authControllers.readUsers)
-.post(validator, authControllers.signUpUser)
+.post(validator, authControllers.signUp)
+
 
 Router.route("/auth/signin")
-.post( authControllers.signInUser)
+.post( authControllers.signIn) 
 
 Router.route("/auth")
-.get(passport.authenticate("jwt", {session: false}), authControllers.token)
+.get(passport.authenticate("jwt", {session: false}), authControllers.checkToken)
 
 Router.route('/activities')
 .post(activityControllers.postActivity)
@@ -60,6 +61,10 @@ Router.route('/like').put(likesControllers.likes)
 Router.route('/comments/:itineraryId')
 .get(commentControllers.getComments)
 .post(validatorComment, commentControllers.postComment) 
+
+Router.route("/interaction/comments")
+  .post(commentControllers.postComment)
+
 
 Router.route('/comments')
 .get(commentControllers.getAllComments)

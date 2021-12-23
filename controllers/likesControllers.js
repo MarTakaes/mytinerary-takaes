@@ -4,6 +4,7 @@ const Itinerary = require('../models/Itinerary')
 const likesControllers = {
     likes: async (req,res)=>{
         const id = req.body.itineraryId
+        console.log(id)
         const itinerary = await Itinerary.findOne({_id : id})
         const likeExist = itinerary.likes.some(like => like === req.body.userId)
         if(!likeExist){
