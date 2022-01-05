@@ -1,6 +1,9 @@
 const HeroCity =()=>{
     return(
-        <img className="herobg" src="./assets/herobg.jpg" alt="herobg" />
+
+        <div className="herobgimg">
+        {/* /* <img className="herobg" src="./assets/herobg.jpg" alt="herobg" />  */}
+        </div>
     )
 }
 export default HeroCity

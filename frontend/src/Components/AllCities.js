@@ -1,63 +1,73 @@
+import { useParams } from 'react-router-dom'
+import MainNav from '../Components/MainNav'
+import citiesAction from '../redux/actions/citiesAction'
+import itinerariesActions from '../redux/actions/itinerariesActions'
+import {connect} from 'react-redux'
+import Itinerary from './Itinerary'
 import {useEffect} from "react"
-import {connect} from "react-redux"
-import citiesAction from "../redux/actions/citiesAction"
-import {useParams} from "react-router-dom"
-import Itinerary from "./itinerary"
+import {Spinner} from "react-bootstrap"
+import useConstructor from '../utilities/useConstructor'
 
-function AllCities(props) {
-  const params = useParams()
+function AllCities (props){
+    const params = useParams()
+    useConstructor(() => {
+        props.setLoad()
+    })
+    useEffect(() => {
+        props.getCity(params.id)
+        props.getItineraries(params.id)
+    }, [])
+    
+    const backgroundCity = {
+        backgroundImage: "url(" + props.city.src + ")"
+    }
 
-  useEffect(() => {
-    //asi no se hace el loop infinito. compDidmount
-    !props.cities[0] && props.getCities() //si no existen cities, traelas
-    props.cities[0] && props.findCity(props.cities, params.id) //si existe cities, encontrame una ciudad por id (los paranms)
-    props.getItinerariesByCityId(params.id)
-  }, [props.cities]) //c/vez q se atualiza props.cities: se ejecuta useEff
-  console.log(props)
-  const back = {
-    backgroundImage: `url(${props.city.src})`,
-    width: "100%",
-    height: "70vh",
-    "background-repeat": "no-repeat",
-    "background-position": "center",
-    "background-size": "cover",
-    "z-index": "-1",
-  }
+    return(
+        <div>
+            <div className="hero-city"  key={props.city._id} style={backgroundCity}>
+                <MainNav/>
+            </div>
+            <div className="con-titulo">
+                <h3 className="titulito">{props.city.name}</h3>
+            </div>
+            <div className="cont-texto container">
+                <p className="texto-city">{props.city.description}</p>
+            </div>
+            <div className='titulo-div' style={backgroundCity}>
+                <h3 className='titulo-itinerario'>
+                    {props.city.name}'s itineraries:
+                </h3>
+            </div>
 
-  return (
-    <>
-    <div className="fondo-itinerario">
-      {props.city && 
-      <>
-        <div style={back}></div>
-        <h1 id="text1">{props.city.name}</h1>
-        <p id="text2">{props.city.description}</p>
-      </>}
-
-      { props.city && props.itineraries.length > 0 
+            {props.city ? (
+                    props.itineraries.length > 0 
                     ? (props.itineraries.map((itinerary, index)=>
-                    <Itinerary key={index} itinerary={itinerary} cityId={params.id} user={props.user} activities={props.activities} />)): (
-        <h1 id="donot">We do not have itineraries for this city yet, coming soon on tuesday 12/14!</h1>
-      )}
-    </div>
-    </>
-  )
+                    <Itinerary key={index} itinerary={itinerary} params={params.id} user={props.user} activities={props.activities} />)) : 
+                    (
+                    <h2 className="mensaje-construccion">There are not itineraries for this city yet...</h2>
+                    )): <Spinner className="spinner" animation="border" variant="danger" />
+            }
+        </div>
+    )
 }
 
+
 const mapDispatchToProps = {
-  //las acciones los guarda en las props
-  getCities: citiesAction.getCities,
-  findCity: citiesAction.findCity,
-  getItinerariesByCityId: citiesAction.getItinerariesByCityId,
+    getCity: citiesAction.getCity,
+    getCities: citiesAction.getCities,
+    getItineraries: itinerariesActions.getItineraries,
+    setLoad: citiesAction.setLoad,
 }
 
 const mapStateToProps = (state) => {
-  //trae los estados  q estan en el reducer y lo manda a props
-  return {
-    cities: state.citiesReducer.cities,
-    city: state.citiesReducer.city,
-    itineraries: state.citiesReducer.itineraries,
-    activities: state.activityReducer.activities,
-  }
+    return {
+        city: state.citiesReducer.city,
+        itineraries: state.itinerariesReducer.itineraries,
+        loading: state.citiesReducer.loading,
+        activities: state.activitiesReducer.activities,
+        token: state.authReducer.token,
+        user: state.authReducer.user
+    }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(AllCities)
+
+export default connect(mapStateToProps,mapDispatchToProps)(AllCities)

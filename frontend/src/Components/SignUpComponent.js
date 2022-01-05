@@ -16,7 +16,7 @@ function SignUp (props) {
             lastName: res.profileObj.familyName,
             email: res.profileObj.email,
             password: res.profileObj.googleId,
-            image: res.profileObj.imageUrl,
+            photo: res.profileObj.imageUrl,
             country: "Argentina",
             google: true
         }
@@ -26,7 +26,7 @@ function SignUp (props) {
     const lastName = useRef()
     const email = useRef()
     const password = useRef()
-    const image = useRef()
+    const photo = useRef()
     const country = useRef()
     
     function handleSignUp(e){
@@ -36,7 +36,7 @@ function SignUp (props) {
             lastName: lastName.current.value,
             email: email.current.value,
             password: password.current.value,
-            image: image.current.value,
+            photo: photo.current.value,
             country: country.current.value
         })
         console.log(name.current.value)
@@ -44,7 +44,7 @@ function SignUp (props) {
         lastName.current.value = ""
         email.current.value = ""
         password.current.value = ""
-        image.current.value = ""
+        photo.current.value = ""
         country.current.value = ""
     }
 
@@ -59,7 +59,7 @@ function SignUp (props) {
                         <input id="input" type="text" ref={lastName} className="input" name="lastName"  required maxLength="25" placeholder="Last Name" />
                         <input id="input" type="text" ref={email} className="input" name="email" required placeholder="Email"/>
                         <input id="input" type="password" ref={password} className="input" name="password" required minLength="8" maxLength="20" placeholder="Password"/>
-                        <input id="input" type="text" ref={image} className="input" name="photo" required placeholder="URL de la foto"/>
+                        <input id="input" type="text" ref={photo} className="input" name="photo" required placeholder="URL de la foto"/>
                         <select id="input2"ref={country} className="input">
                             {countries.sort().map(country =>{
                                 return(

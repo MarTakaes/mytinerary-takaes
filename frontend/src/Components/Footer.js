@@ -18,7 +18,7 @@ function Footermain() {
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <img key="ok" id="Logo" src="../assets/logo.png" alt="logo" />
+            <img key="ok" className="logo" src="../assets/logo.png" alt="logo" />
           </Nav.Item>
           <Nav.Item>
             <Nav.Link id="pl" href="/Cities">

@@ -1,17 +1,15 @@
 const mongoose = require('mongoose');
 
 const itinerarySchema = new mongoose.Schema({
-    itineraryName:{type:String, required: true}, 
-    userName:{type:String, required:true},
-    userImg:{type:String, required:true},
-    price:{type:Number, required:true},
-    likes:{type:[String], default:0},
-    duration:{type:Number, default:0},
-    hashtag: [{type:String}],
-    comment: {type:String},
-    city: {type:mongoose.Types.ObjectId, ref:"city"}
-    
-    
+    name:{type:String, required: true},
+    userName: {type:String, required: true},
+    src:{type:String, required: true},
+    title:{type:String, requiered: true},
+    price:{type: Number, min:1, max:5, required: true },
+    duration: {type: Number, min:1, required: true },
+    likes: {type:[] },
+    hashtags: {type: [] },
+    city: {type: mongoose.Types.ObjectId, ref:'city'}
 })
 
 const Itinerary = mongoose.model("itinerary", itinerarySchema )

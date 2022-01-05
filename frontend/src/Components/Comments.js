@@ -2,12 +2,12 @@ import itinerariesActions from "../redux/actions/itinerariesActions"
 import {useRef, useState} from "react"
 import {connect} from "react-redux"
 import swal from "sweetalert"
-import {FaRegTrashAlt} from "react-icons/fa";
+import {FcEmptyTrash} from "react-icons/fc";
 import {FiEdit} from "react-icons/fi";
 
 function Comments(props) {
     const editar = <FiEdit />
-    const basura = <FaRegTrashAlt />
+    const basura = <FcEmptyTrash/>
     const editComment = useRef()
     const [edit, setEdit] = useState(false)
 
@@ -44,12 +44,11 @@ function Comments(props) {
     
     return(
         <div className="comentario">
-            {console.log(props.comment)}
             {props.comment.user && (
                 <div className="comentario-cont">
-                    <img className="foto-comentario" src={props.comment.user.image} />
+                    <img className="foto-comentario" src={props.comment.user.photo} />
                     <div className="texto-comentario">
-                        <h5 className="titulo-name">{props.comment.user.name}</h5>
+                        <h5 className="titulo-name">{props.comment.user.photo}</h5>
                         <p className="msj-comentario">{props.comment.message}</p> 
                     </div>   
                 </div>

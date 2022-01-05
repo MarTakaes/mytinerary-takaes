@@ -1,36 +1,37 @@
 import axios from 'axios';
 
-
-const citiesAction = {
+const citiesActions = {
     getCities: () => {
         return async (dispatch, getState) => {
-          let response = await axios.get("http://localhost:4000/api/cities")
-          dispatch({
-            type: "GET_ALL_CITIES",
-            payload: response.data.response,
-          })
+            const response = await axios.get('http://localhost:4000/api/cities');
+            
+            dispatch({type: "GET_ALL_CITIES", payload: {response:response.data.response, loading:false}});
         }
-      },
-      filter: (cities, value)=>{
-        return (dispatch,getState)=>{
-            dispatch({type:'FILTER', payload:{cities, value}})
+    },
+    filterCities: (cities, value) => {
+        return (dispatch, getState) => {
+            dispatch({type: "FILTER_CITIES", payload:{cities, value}})
         }
-      },
-      findCity: (cities,id) => {
-        return (dispatch, getState) =>  {
-          dispatch({type: 'FIND_A_CITY', payload: {cities, id}})
+    },
+    getCity: (id) => {
+        return async (dispatch, getState) =>{
+            const response = await axios.get('http://localhost:4000/api/city/' + id);
+            dispatch({type:"GET_A_CITY_ID", payload:response.data.response })
         }
-      },
-      getItinerariesByCityId: (city_id) => {
-        return async (dispatch, getState) => {
-          let response = await axios.get("http://localhost:4000/api/itineraries/" + city_id)
-          dispatch({type: "GET_ITINERARY_BY_CITY_ID", payload: response.data.response})
-       }
-     },
-     
-
+    }, 
+    findCity: (cities, id) => {
+        return (dispatch, getState) => {
+            dispatch({type: "GET_A_CITY", payload:{cities, id}})
+        }
+    },
+    setLoad: () => {
+        return(dispatch, getState) =>{
+            dispatch({type: "SET_LOAD", payload:true})
+        }
+    }
+    
 }
 
 
 
-export default citiesAction
+export default citiesActions;

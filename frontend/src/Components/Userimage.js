@@ -8,7 +8,7 @@ function LoggingButton (props){
     }
       return (
         <button className="btn" onClick ={() => handleClick()}>
-          {props.user ? <img width="25rem" src={props.user.photo} alt={props.user.name}/> : <img id="userimg" src= "../assets/user.png" alt="user img"/>}
+         <img id="userimg" src= "../assets/user.png" alt="user img"/>
         </button>
       );
   }

@@ -4,44 +4,34 @@ const commentControllers = {
     getAllComments:async (req, res) => {
         Comment.find()
         .populate({ path: "user", select: ["name", "email", "photo"]})
-        .then(response => {
-            console.log(response)
-            res.json({success: true, response: response})}) 
+        .then(response => {res.json({success: true, response: response})})
+        
     },
     getComments: async (req, res) => {
         try {
             let commentList = await Comment.find({
                 itinerary: req.params.itineraryId,
-            }).populate({ path: "user", select: ["name", "email", "image"]});
-            console.log("hello")
-            console.log(commentList)
+            }).populate({ path: "user", select: ["name", "email", "photo"]});
             res.json({ success: true, error: null, response: commentList });
         } catch (e) {
             res.json({ success: false, error: e, response: null });
         }
     },
     postComment: async (req, res) => {
-        const { user, itinerary, message } = req.body;
+        const itinerary = req.params.itineraryId
+        const { user, message } = req.body;
         try {
-          const newComment = new Comment({ user, itinerary, message });
-          let comment = await newComment
-            .save()
-            .then((newComment) =>
-              newComment.populate({
-                path: "user",
-                select: ["email", "image", "name"],
-              })
-            );
-          res.json({
-            success: true,
-            response: comment,
-            error: null,
-          });
+            await new Comment({itinerary, user, message }).save();
+            res.json({
+                success: true,
+                response: "Uploaded comment with message: " + message,
+                error: null,
+            });
         } catch (e) {
-          res.json({ success: false, error: e, response: null });
-          console.error(e);
+            res.json({ success: false, error: e, response: null });
+            console.error(e);
         }
-      },
+    },
     editComment: async (req, res) => {
         try {
             let newComment = await Comment.findOneAndUpdate(
@@ -58,11 +48,10 @@ const commentControllers = {
     },
     deleteComment: async (req, res) => {
         try {
-            await Comment.findOneAndDelete({ _id: req.params.commentId , user:req.user._id });
-            console.log("te borre")
+            let comment = await Comment.findOneAndDelete({ _id: req.params.commentId});
             res.json({
                 success: true,
-                response: "Deleted comment with id" + req.body.id,
+                response: comment,
             });
         } catch (e) {
             res.json({ success: false, error: e });
@@ -71,4 +60,4 @@ const commentControllers = {
     }
 }
 
-module.exports = commentControllers
+module.exports = commentControllers 

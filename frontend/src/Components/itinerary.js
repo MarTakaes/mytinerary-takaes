@@ -1,139 +1,134 @@
-import { connect } from "react-redux"
-import {useState} from "react"
-import { useEffect, useRef } from "react"
-import {toast} from "react-toastify"
-import Col from "react-bootstrap/Col"
+import {connect} from 'react-redux'
+import {useRef} from "react"
+import {Card} from "react-bootstrap"
+import {useEffect, useState} from "react"
+import { AiOutlineDollarCircle } from "react-icons/ai"
+import {AiOutlineClockCircle} from "react-icons/ai";
 import activitiesAction from "../redux/actions/activitiesAction"
-import Comments from "../Components/Comments"
 import itinerariesActions from "../redux/actions/itinerariesActions"
-import Image from 'react-bootstrap/Image'
+import Comments from "./Comments"
+import { toast } from "react-toastify"
 
 function Itinerary(props) {
-  const [display, setDisplay] = useState(false)
-  const [liked, setLiked] = useState("")
-  const [likeQuantity, setlikeQuantity] = useState("")
+    const hora = <AiOutlineClockCircle />
+    const plata = <AiOutlineDollarCircle />
+    const [display, setDisplay] = useState(false)
+    const [liked, setliked] = useState("") 
+    const [likes, setlikes] = useState("")
 
-  if (!localStorage.getItem("token") && liked === "") {
-    setLiked(false)
-}
-useEffect(() => {
-  !props.user && setLiked(false)
-  }, [props.user])
-
-  if (props.itinerary && liked === "" && likeQuantity === "") {
-    if(props.user){
-    setLiked(props.itinerary.likes.some((id) => id === props.user._id))
+    if (!localStorage.getItem("token") && liked === "") {
+        setliked(false)
     }
-    setlikeQuantity(props.itinerary.likes)
-}
-useEffect(() => {
-  !props.activities.length && props.getActivities(props.itinerary._id)
-}, [props.activities])
 
+    if (props.itinerary && liked === "" && likes === "") {
+        if(props.user){
+        setliked(props.itinerary.likes.some((id) => id === props.user._id))
+        }
+        setlikes(props.itinerary.likes.length)
+    }
+    useEffect(() => {
+        !props.activities[0] && props.getActivities(props.itinerary._id)
+    }, [props.activities])
 
-  function precio(price) {
-    return Array.from({length: price})
-  }
-  const handleClick = () => {
-    setDisplay(!display)
+    const handleClick = () => {
+        setDisplay(!display)
+        props.getActivities(props.itinerary._id)
+        props.getAllComments()
+    }
+    const comment = useRef()
     
-    props.getAllComments()
-}
-console.log(props.comments)
-const comment = useRef()
+    function handleComment(e){
+        e.preventDefault()
+        props.postComments(
+            props.itinerary._id,
+            props.user._id,
+            comment.current.value
+        )
+        comment.current.value = ""
+    }
+
+    function handleLike() {
+        if (localStorage.getItem("token") && props.user.email) {
+            setliked(!liked)
+            liked ? setlikes(likes - 1) : setlikes(likes + 1)
+            console.log(props.params)
+            props.likes(props.user._id, props.itinerary._id, props.params)
+        } else {
+            toast.warning("Please sign in to like this itinerary", {
+            position: toast.POSITION.TOP_CENTER,
+            })
+        }
+    }
+
+    function precio(price) {
+        return Array.from({length: price})
+    }
+
     
-function handleComment(e){
-    e.preventDefault()
-    props.postComments(
-        props.itinerary._id,
-        props.user._id,
-        comment.current.value
-    )
-    comment.current.value = ""
-        console.log("le di click")
-}
 
-function handleLike() {
-  if (localStorage.getItem("token")) {
-      setLiked(!liked)
-      liked ? setlikeQuantity(likeQuantity - 1) : setlikeQuantity(likeQuantity + 1) 
-      console.log(props.itinerary)
-      props.likes(props.user._id, props.itinerary._id, props.params) 
-  } else {
-      toast.warning("Please sign in to like this itinerary", {
-      position: toast.POSITION.TOP_CENTER,
-      })
-  }
-}
-
-  return (
-    <>
-      
-          <div className="d-flex justify-content-center">
-          <div  className="itinerarioCard">
-            <h2 id="itinerariotext">{props.itinerary.itineraryName}</h2>
-            <img className="singleCard" variant="top" src={props.itinerary.userImg} />
-            <div id="sub">
-               <h4 id="username">{props.itinerary.userName}</h4>
-            </div>
-            <div className="div">
-              
-                <div className="minidiv">
-                <div className="like">
-                                <p className="corazones" onClick={() => handleLike()}>
-                                    {liked ?  "💗" : "♡" }
-                                </p>
-                               
+    return (
+        <div key= {props.itinerary._id} className="itinerarios">
+            <Card  className="card-itinerary">
+                <Card.Header className="header-itinerary color-texto">{props.itinerary.title}</Card.Header>
+                <Card.Body className="card-body" >
+                    <div className="cont-card">
+                        <div className="usuario">
+                            <img key= {props.itinerary._id} className="foto-perfil" variant="top" src={props.itinerary.src} />
+                            <p className='name'>{props.itinerary.name}</p>
+                        </div>
+                        <div className="texto-itinerario">
+                            <div className="duracion-costo">
+                                <div className='horas'>
+                                    <p className='hora'>{hora}</p><p className="duracion">{props.itinerary.duration}Hs</p>
                                 </div>
-                </div>                
-                <div className="minidiv" id="border">
-                    <div>Duration: {props.itinerary.duration}hs</div>
-                </div>
-                <div className="minidiv" id="border">
-                  {precio(props.itinerary.price).map(() => (
-                    <div>💵</div>
-                  ))}
-                </div>
-              </div>
-              <div className="hashtag">
-              {props.itinerary.hashtag.map((hash) => (
-                <div className="tag">  #{hash}  </div>
-                ))}
-            </div>
-            <div>
-                <button className="btn-warning" onClick= {() => handleClick(props.itinerary._id)}>
-                                {" "}
-                                {display ? "View less" : "View more"}
-                </button>
-               
-                <div>
-                  {display && (
-                              props.activities[0] && props.activities.map(activity => 
-                              {if(activity.itinerary._id === props.itinerary._id){
-                              return(
-                                    <div className="d-flex flex-column" id="divis">
-                                      <h3 id="titleact">{activity.title}</h3>
-                                      <Col xs={6} md={4}>
-                                      <img id="img" src={activity.image} alt={activity.title} />
-                                      </Col>
-                                      <p id="pact">{activity.description}</p>
-                                    </div>
-                              
-                                  )}else{
-                                    <h2>Under Construction</h2>
-                                  }
-                                })
-                              )}                       
-                </div>
-                <div>
+                                <div className="precio">
+                                    <p className="color-texto">Price:</p> {precio(props.itinerary.price).map((index) => (
+                                        <span key={index + 1} className="plata">{plata}</span>
+                                    ))}
+                                </div>    
+                                <div className="like">
+                                <p className="corazones" onClick={() => handleLike()}>
+                                    {liked ? 
+                                    <img className="corazon" src="../assets/like-rojo.png"></img> : 
+                                    <img className="corazon" src="../assets/like.png"></img>}
+                                </p><p>{likes}</p>
+                                </div>
+                            </div>
+                            <div className="hashtags">
+                                {props.itinerary.hashtag.map((hash, index) => (
+                                    <div key={hash} className="color-texto hashtag"> #{hash}</div>
+                                ))}
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div className="actividades">
+                        {display && (
+                            props.activities[0] && props.activities.map(activity => 
+                                {if(activity.itinerary._id === props.itinerary._id){
+                                    return(
+                                        <div className="actividad">
+                                            <div
+                                                className="activit-img"
+                                                style={{ backgroundImage: `url("${activity.image}")` }}
+                                            >
+                                                <h3 className="activit-titulo">{activity.title}</h3>
+                                            </div>
+                                        </div>
+                                    )
+                                }else{
+                                    <h2 className='under'>Under Construction</h2>
+                                }
+                                }
+                            )
+                        )}
+                    </div>
                     {display && (
                         <div className="formu-comentarios">
                             <div className="titulo-comentarios">
                                 <h3 className='comentario-titulo' >Comments</h3>
                             </div>
-                            
-                            {props.comments.length>0 && props.comments.map(comment => {
-                              {console.log(comment.itinerary)}
+                            {props.comments && props.comments.map(comment => {
                                 if(comment.itinerary === props.itinerary._id){
                                     return(
                                         <div className='fondo-comentario'>
@@ -145,7 +140,7 @@ function handleLike() {
                             }
                         </div>
                     )
-                 }
+                    } 
                     {display && (
                         <form className="input-comentar" onSubmit={handleComment}>
                             <input
@@ -157,26 +152,28 @@ function handleLike() {
                             <input className='btn-submit btn-comentar' type="submit" value="Submit" />
                         </form>
                     )}   
-                    </div>
-               </div>
-            </div>
-          </div>
-        )
-    </>
-  )
+                    <button onClick= {handleClick} className="btn-ver">
+                        {" "}
+                        {display ? "View less" : "View more"}
+                    </button>
+                </Card.Body>
+            </Card>
+        </div>
+    )
 }
-const mapStateToProps = (state) => {
-  return{
-    user: state.authReducer.user,
-    comments: state.itinerariesReducer.comments}
-  
-}
+
+
 
 const mapDispatchToProps = {
-  likes: itinerariesActions.likes,
-  getActivities: activitiesAction.getActivities,
-  getAllComments: itinerariesActions.getAllComments,
-  postComments: itinerariesActions.postComments,
-};
+    getActivities: activitiesAction.getActivities,
+    getAllComments: itinerariesActions.getAllComments,
+    postComments: itinerariesActions.postComments,
+    likes: itinerariesActions.likes
+}
+const mapStateToProps = (state) => {
+    return {
+        comments: state.itinerariesReducer.comments,
+    }
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Itinerary);
+export default connect(mapStateToProps, mapDispatchToProps)(Itinerary)

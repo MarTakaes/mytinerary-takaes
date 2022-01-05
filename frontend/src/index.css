@@ -4,37 +4,81 @@ body {
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
 }
-
-#userimg{
+.titulo-logo{
   display: flex;
   justify-content: center;
-  height: 3rem;
+  align-items: center;
+}
+.logo{
+  height: 8rem;
 }
 
-
-#navusertext{
+.titulo{
+  color: #324b51d3;
+  font-size: 40px;
   display: flex;
 }
-#Logo{
-  height: 7rem;
-}
-
-#Navletter{
-  color: #324b51;
-  font-size: 22px;
-  margin-left: 1rem;
-}
-#nav{
+.nav{
   display: flex;
   position: fixed;
-  flex-shrink: 12;
   height: 5rem;
   width: 100%;
   background-color:rgba(255, 255, 255, 0.103);
   cursor: pointer!important;
   z-index: 50;
 }
-
+.navHome{
+  font-size: 25px;
+  display: flex;
+  
+}
+.dropdown-menu{
+  background-color: rgba(0, 0, 0, 0.767);
+  display: flex!important;
+  justify-content: center!important;
+  
+}
+.mensaje-construccion{
+  font-size: 30px;
+}
+.herobgimg{
+  background-image: url(./assets/herobg.jpg);
+  height: 30rem;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.dropdown-menu a {
+  color: white!important;
+}
+.dropdown-menu :hover{
+ background-color: rgba(255, 255, 255, 0.377);
+ color: black !important;
+}
+.color-font{
+  color:black !important;
+  font-size: 1.8rem;
+  display: flex;
+  align-self: center;
+  margin-right: 1rem;
+}
+.iconn{
+  font-size: 2rem;
+  line-height: 100%;
+  align-self: center;
+}
+.nav2{
+  color: #fff !important;
+}
+.collapsed{
+  border: none !important;
+}
+.navbar-toggler-icon {
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(500deg) brightness(101%) contrast(101%);
+}
+.dropdown-toggle{
+  margin-right: 1rem;
+}
 #hero{
   display: flex;
   width: 100%;
@@ -57,6 +101,13 @@ body {
 }
 h2{
  font-size: 6rem;
+}
+.nav-img{
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%; 
+  align-self: center;
+  object-fit: cover;
 }
 #lecture{
   position: absolute;
@@ -116,7 +167,7 @@ a{
   display: flex;
   justify-content: center;
   margin-left: 0;
-  color: #324b51;
+  color: rgba(255, 255, 255, 0.445)!important;
   margin-top: 13rem;
   font-size: 40px;
   background-color: black;
@@ -134,12 +185,20 @@ a{
 }
 .footer{
 display: flex;
-position:absolute;
+position: absolute;
 width: 100%;
+height: 8rem;
 align-items: center;
 justify-content: space-around;
-background-color: #000b0e6c;
+background-color: #000b0e4b;
 color: #324b51;
+}
+.hero-city{
+  width: 100%;
+  height: 50vh;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
 #ig{
   height: 2rem;
@@ -179,26 +238,61 @@ color: #324b51;
   display:flex;
   justify-content: space-evenly!important;
 }
-
-.hashtag{
-  display:flex;
-  justify-content:space-evenly;
-}
-#itinerariotext{
-  font-size: 35px;
-}
-#username{
+.titulito{
+  margin-top: 0;
   display: flex;
-  margin-top: 1rem;
+  font-size: 40px;
+  color: rgba(255, 255, 255, 0.829);
+  justify-content: flex-start;
+  padding-left: 2rem;
+  background-color: #324b515d;
 }
-#sub{
-  display: flex;
-  margin-left: -5rem;
+.texto-city{
+  margin-top: 2rem;
+  font-size: 22px;
+  margin-bottom: 2rem;
 }
-.div{
+.titulo-itinerario{
   display: flex;
   justify-content: center;
+  font-size: 40px;
+  color: rgba(0, 0, 0, 0.712);
+  font-style: italic;
 }
+/*ACTIVIDADES*/
+.actividades{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: .5rem;
+  object-fit: cover;
+  object-position: center;
+}
+.activit-titulo{
+  text-align: center;
+  padding: 0.5rem;
+  color:rgba(255, 255, 255, 0.904);
+  text-shadow:0px 2px 2px rgba(70, 69, 69, 0.733) ;
+  font-size: 1rem;
+  border-radius: .5rem;
+}
+.activit-img{
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 0.2rem;
+  box-shadow: 0px 4px 4px rgba(44, 44, 44, 0.733);
+  width: 18vw;
+  height: 25vh;
+  border-radius: .5rem;
+  margin: .2rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 0 .5rem;
+} 
 .itinerarioCard{
   display: flex; 
   align-self: center; 
@@ -286,9 +380,12 @@ object-fit: cover;
   
 }
 .btn-submit{
+  width: 5rem;
   margin-top: 1rem;
   margin-left: 8.5rem;
-  background-color: #324b51c4;
+  background-color: #324b5185;
+  border-radius: .5rem;
+  color: rgba(255, 255, 255, 0.897);
 }
 .account{
   margin-top: 2rem;
@@ -312,6 +409,9 @@ color: blue;
 #google{
   margin-top: 2rem;
   margin-left: 5rem;
+}
+.dropdowm-item .hover{
+  
 }
 #titleact{
   margin-left: -3rem;
@@ -364,6 +464,310 @@ color: blue;
 .card-ciudad{
   margin-top: 6rem;
   justify-content: space-evenly;
+}
+.card{
+  border: 0 !important;
+}
+.btn-ver{
+  width: 100%;
+  padding: .3rem 0;
+  background-color: #324b51b4;
+  border: 0;
+  box-sizing: border-box;
+  border-radius: 0px 0px 4px 4px;
+  color:rgba(255, 255, 255, 0.651);
+  border: #828796 2px solid;
+  font-weight: bold;
+  font-size: 17px;
+}
+.btn-ver:hover{
+  background-color: #fa746d00;
+  border: #828796 2px solid;
+  color: #324b51;
+}
+.example-collapse-text{
+  display: flex;
+  justify-content: center;
+}
+.texto-construccion{
+  color: #2D3962;
+  display: flex;
+  justify-content: center;
+  font-weight: lighter;
+}
+.card{
+  border: 0;
+}
+.foto-perfil {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  display: flex;
+  border-radius: 50%;
+  justify-content: center;
+  border: var(--navBar) solid 3px;
+  border: #2D3962 2.5px solid;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+} 
+.name{
+  font-size: 20px;
+  margin-top: 1rem;
+}
+.duracion-costo{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+  font-size: 18px;
+  align-content: center;
+  align-items: center;
+  text-align: center;
+}
+.horas{
+  display: flex;
+}
+.hora{
+  display: flex;
+  align-self: center;
+  color: #4b63b3 !important;
+  margin-right: .2rem;
+}
+.duracion{
+  display: flex;
+  align-self: center;
+  margin-right: 1rem;
+}
+.precio, .duracion{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.plata{
+  align-self: center;
+  margin-left: .2rem;
+  justify-content: center;
+  color:#049924;
+}
+.hashtags{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.hashtag{
+  margin-right: 1rem;
+  color: #4b63b3;
+}
+.mensaje-construccion{
+  color: #2D3962 ;
+  display: flex;
+  justify-content: center;
+}
+.color-texto{
+  color: #2D3962;
+}
+.corazones{
+  display: flex;
+  align-self: center;
+}
+.corazon{
+  width: 1rem;
+  margin-right: .3rem;
+}
+.like{
+  display: flex;
+  margin-left: 1rem;
+}
+.numero-like{
+  font-size: 0.8rem;
+  align-self: center;
+}
+.texto-itinerario{
+  display: flex;
+  flex-direction: column;
+  width: 35vw;
+  height: 20vh;
+  justify-content: space-around;
+  align-items: space-around;
+  align-self:center;
+}
+.itinerarios{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.cont-card{
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem;
+}
+.card-body{
+  padding: 0 !important;
+}
+
+.usuario{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.foto-usuario{
+  background-color: rgb(153, 152, 152);
+  width: 15vw;
+  height: 20vh;
+}
+.card-itinerary{
+  width: 60%;
+  display: flex;
+  margin-top: 4rem;
+  margin-bottom: 1rem;
+  border-style: solid;
+  border-color: #324b51!important;
+  box-shadow: 5px 6px 6px rgba(0, 0, 0, 0.493);
+}
+.card-body{
+ 
+  
+}
+.header-itinerary{
+  background-color: #324b51 !important;
+  padding: 1rem !important;
+  display: flex;
+  justify-content: center;
+  font-size: 27px;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.801);
+  text-shadow: 6px 6px 6px rgba(0, 0, 0, 0.575);
+}
+p{
+  color: #2d396298 !important;
+}
+/*COMENTARIOS*/
+.eliminar{
+  display: flex;
+  align-self: center;
+  padding-left: .3rem;
+  color: white !important;
+}
+.btn-editor{
+  height: 2rem;
+  background-color: #324b5186;
+  border: 2px solid #324b5186;
+  color: #fff;
+  display: flex;
+  align-self: center;
+  padding: .2rem;
+  border-radius: .2rem;
+}
+.btn-edit{
+  display: flex;
+  align-self: center;
+  color:#FA736D !important;
+
+}
+.editor{
+  display: flex;
+}
+.btn-cursor{
+  cursor: pointer;
+color: black;
+height: 5rem;
+}
+
+.input-comentar{
+  display: flex;
+  justify-content: center;
+}
+.btn-comentar{
+  margin: .8rem 1.5rem .8rem 0;
+  padding: 0 !important;
+  height: 2.2rem;
+}
+.comentar, .comentar-input{
+  width: 80%;
+  margin: .8rem .5rem .8rem 1.5rem;
+  border-radius: .2rem;
+  background: #828796b9;
+  border: 1px solid #324b51;
+  box-sizing: border-box;
+  padding: .3rem;
+
+}
+.comentar-input:focus{
+  outline:none;
+}
+.comentar:focus{
+  outline:none;
+}
+.comentar::placeholder {
+  color: #fff;
+}
+.foto-comentario{
+  border-radius: 50%;
+  width: 3.5rem;
+  height: 3.5rem;
+  display: flex;
+  align-self: center;
+}
+.texto-comentario{
+  margin-left: 1.5rem;
+  width: 90%;
+  font-weight: normal;
+}
+.comentario-titulo{
+  color: #324b51;
+  font-size: 30px;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) ;
+}
+.titulo-name{
+  margin: 0 !important;
+  padding: .5rem !important;
+  font-weight: normal !important;
+  color: #2D3962 !important;
+}
+.fondo-comentario{
+  height: 7rem;
+  margin-top: .5rem;
+  background-color: rgba(255, 255, 255, 0.329);
+  border-radius: .2rem;
+  border-style:groove;
+  margin-bottom: 1rem;
+  border-color: #324b51;
+}
+.formu-comentarios{
+  border-style: ridge;
+  border-radius: .5rem;
+  margin: 1.5rem 1.5rem 0 1.5rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  background-image:url(./assets/fondo.jpg);
+  background-position:top;
+  background-repeat: repeat;
+  background-size: cover;
+}
+.titulo-comentarios{
+  display: flex;
+  justify-content: center;
+  
+}
+.btn-comentarios{
+  display: flex;
+}
+.comentario{
+  display: flex;
+  justify-content: space-between;
+  padding: .5rem;
+}
+.msj-comentario{
+  font-weight: bold;
+  font-style: italic;
+  background-color: rgba(255, 255, 255, 0.52);
+  color: rgba(0, 0, 0, 0.788) !important;
+  margin-top: 0 !important;
+  padding: .5rem;
+}
+.comentario-cont{
+  display: flex;
 }
 @media (max-width: 799px){
   h2{
@@ -462,10 +866,7 @@ color: blue;
     margin-top: 4rem;
     font-size: 25px;
   }
-  .footer{
-    display: flex;
-    flex-direction: column;
-  }
+
   #spaceLeft{
     font-size: 12px;
   }
