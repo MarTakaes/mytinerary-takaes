@@ -7,7 +7,7 @@ function RenderCities() {
   const [search, setSearch] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:4000/api/cities")
+    fetch("https://my-tinerary-takaes.herokuapp.com/api/cities")
       .then((res) => res.json())
       .then((data) => setCiudades(data.response))
       .catch((err) => console.log(err.message));
